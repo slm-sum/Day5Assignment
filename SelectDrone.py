@@ -10,10 +10,10 @@ DRONE_P3 = '5932'
 DRONE_P4 = '5942'
 DRONE_P5 = '5952'
 
-TARGET_LAT = 35.806627
+TARGET_LAT = 35.806627  # 位置精度として小数点第７位以上指定したほうが良いと思います。
 TARGET_LON = 139.085252
 
-TARGET_LAT_S = 35.8065
+TARGET_LAT_S = 35.8065 #  小数点第４位ですか。なかなかこのような場所はみつからないので、ちょっときになりました。
 TARGET_LON_S = 139.0852
 
 TARGET_LAT_L = 35.8067
@@ -24,7 +24,7 @@ def SelectDrone():
     v_distances = {}
 
     for d in drones:
-        vehicle = connect('tcp:' + IP_ADDR + ':' + d, wait_ready=True, timeout=60)
+        vehicle = connect('tcp:' + IP_ADDR + ':' + d, wait_ready=True, timeout=60) # 意図的にコネクション型通信を選択されていましたら、ぜひ、ご説明をお聞きしたいです。
         while not vehicle.home_location:
             cmds = vehicle.commands
             cmds.download()
@@ -54,7 +54,7 @@ def SelectDrone():
     return(v_distances[0])
 
 def flight(port):
-    vehicle = connect('tcp:' + IP_ADDR + ':' + port, wait_ready=True, timeout=60)
+    vehicle = connect('tcp:' + IP_ADDR + ':' + port, wait_ready=True, timeout=60) # 意図的にコネクション型通信を選択されていましたら、ぜひ、ご説明をお聞きしたいです。
 
     while not vehicle.is_armable:
         print("初期化中です")
